@@ -1,7 +1,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
-import ReactDemo1 from './miniProject01/MiniProject';
-import MiniProjects from './MiniProjects';
+// import ReactDemo1 from './miniProject01/MiniProject';
+// import MiniProjects from './MiniProjects';
 
 class PortfolioItem extends React.Component {
   constructor() {

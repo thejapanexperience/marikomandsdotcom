@@ -276,9 +276,9 @@ export default class HomePage extends React.Component {
                 created by <a
                   className="footerText2"
                   target="_blank"
-                  href="http://richardmands.com"
+                  href="https://richardmands.com"
                 >
-                  Richard Mands
+                  Richard Mandss
                 </a>
                 </div>
               </div>
