@@ -278,7 +278,7 @@ export default class HomePage extends React.Component {
                   target="_blank"
                   href="https://richardmands.com"
                 >
-                  Richard Mandss
+                  Richard Mands
                 </a>
                 </div>
               </div>
