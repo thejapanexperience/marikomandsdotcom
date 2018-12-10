@@ -1,0 +1,2054 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro|Ubuntu');
+
+@mixin responsive-font($responsive, $min, $max: false, $fallback: false) {
+  $responsive-unitless: $responsive / ($responsive - $responsive + 1);
+  $dimension: if(unit($responsive) == 'vh', 'height', 'width');
+  $min-breakpoint: $min / $responsive-unitless * 100;
+
+  @media (max-#{$dimension}: #{$min-breakpoint}) {
+    font-size: $min;
+  }
+
+  @if $max {
+    $max-breakpoint: $max / $responsive-unitless * 100;
+
+    @media (min-#{$dimension}: #{$max-breakpoint}) {
+      font-size: $max;
+    }
+  }
+
+  @if $fallback {
+    font-size: $fallback;
+  }
+
+  font-size: $responsive;
+}
+
+.font1 {
+  font-family: 'Ubuntu', sans-serif;
+}
+.font2 {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+.fontSizeTitle1 {
+  @include responsive-font(5vw, 16px, 35px, 30px);
+}
+.fontSizeTitle2 {
+  @include responsive-font(13vw, 16px, 150px, 50px);
+}
+.fontSizeTitle3 {
+  @include responsive-font(11vw, 14px, 130px, 50px);
+}
+.fontSizeTitle4 {
+  @include responsive-font(5.5vw, 14px, 80px, 50px);
+}
+.fontSizeIcons1 {
+  @include responsive-font(5vw, 16px, 40px, 16px);
+}
+.fontSizeBody1 {
+  @include responsive-font(3vw, 14px, 20px, 16px);
+}
+.fontSizeBody1b {
+  @include responsive-font(2.5vw, 8px, 20px, 16px);
+}
+.fontSizeBody2 {
+  @include responsive-font(1.5vw, 6px, 16px, 16px);
+}
+.fontSizeBody3 {
+  @include responsive-font(2vw, 9px, 18px, 16px);
+}
+
+.color1 {
+  color: #311847;
+}
+$color1: #311847;
+
+.color2 {
+  color: #e93e43;
+}
+$color2: #e93e43;
+
+.colorJS {
+  color: #f0da5a;
+}
+$colorJS: #f0da5a;
+
+$colorGradient1: rgba(135, 11, 180, 0.8);
+$colorGradient2: rgba(230, 20, 100, 0.7);
+// $colorGradient2: #ff1e31c9;
+// $colorGradient3: #140086d0;
+// $colorGradient1: #8e0082d2;
+// $colorGradient4: #f3f700d2;
+
+.transition0 {
+  transition: all 1s;
+  -webkit-transition: all 1s;
+  // -webkit-backface-visibility: hidden; //Webkit fix
+  // transform: translate3d(0px,0px,0px); //Firefox fix
+}
+.transition1 {
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  // -webkit-backface-visibility: hidden; //Webkit fix
+  // transform: translate3d(0px,0px,0px); //Firefox fix
+}
+.transition1Size {
+  transition: font-size 0.2s;
+  -webkit-transition: font-size 0.2s;
+  -webkit-backface-visibility: hidden; //Webkit fix
+  transform: translate3d(0px, 0px, 0px); //Firefox fix
+}
+
+.transition2 {
+  transition: all 1s;
+  -webkit-transition: all 1s;
+  -webkit-backface-visibility: hidden; //Webkit fix
+  transform: translate3d(0px, 0px, 0px); //Firefox fix
+}
+.transition3 {
+  transition: all 2s;
+  -webkit-transition: all 2s;
+  -webkit-backface-visibility: hidden; //Webkit fix
+  transform: translate3d(0px, 0px, 0px); //Firefox fix
+}
+.transition4 {
+  transition: all 2s;
+  -webkit-transition: all 2s;
+  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.5s;
+  -webkit-backface-visibility: hidden; //Webkit fix
+  transform: translate3d(0px, 0px, 0px); //Firefox fix
+}
+.transition5 {
+  transition: all 2s;
+  -webkit-transition: all 2s;
+  transition-delay: 1s;
+  -webkit-transition-delay: 1s;
+  -webkit-backface-visibility: hidden; //Webkit fix
+  transform: translate3d(0px, 0px, 0px); //Firefox fix
+}
+
+.shadowFull {
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.35),
+    -10px -10px 10px rgba(0, 0, 0, 0.35);
+}
+
+// Body
+body {
+  @extend .font1;
+  @extend .transition1;
+  color: $color1;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 28' width='56' height='28'%3E%3Cpath fill='%239C92AC' fill-opacity='0.4' d='M56 26v2h-7.75c2.3-1.27 4.94-2 7.75-2zm-26 2a2 2 0 1 0-4 0h-4.09A25.98 25.98 0 0 0 0 16v-2c.67 0 1.34.02 2 .07V14a2 2 0 0 0-2-2v-2a4 4 0 0 1 3.98 3.6 28.09 28.09 0 0 1 2.8-3.86A8 8 0 0 0 0 6V4a9.99 9.99 0 0 1 8.17 4.23c.94-.95 1.96-1.83 3.03-2.63A13.98 13.98 0 0 0 0 0h7.75c2 1.1 3.73 2.63 5.1 4.45 1.12-.72 2.3-1.37 3.53-1.93A20.1 20.1 0 0 0 14.28 0h2.7c.45.56.88 1.14 1.29 1.74 1.3-.48 2.63-.87 4-1.15-.11-.2-.23-.4-.36-.59H26v.07a28.4 28.4 0 0 1 4 0V0h4.09l-.37.59c1.38.28 2.72.67 4.01 1.15.4-.6.84-1.18 1.3-1.74h2.69a20.1 20.1 0 0 0-2.1 2.52c1.23.56 2.41 1.2 3.54 1.93A16.08 16.08 0 0 1 48.25 0H56c-4.58 0-8.65 2.2-11.2 5.6 1.07.8 2.09 1.68 3.03 2.63A9.99 9.99 0 0 1 56 4v2a8 8 0 0 0-6.77 3.74c1.03 1.2 1.97 2.5 2.79 3.86A4 4 0 0 1 56 10v2a2 2 0 0 0-2 2.07 28.4 28.4 0 0 1 2-.07v2c-9.2 0-17.3 4.78-21.91 12H30zM7.75 28H0v-2c2.81 0 5.46.73 7.75 2zM56 20v2c-5.6 0-10.65 2.3-14.28 6h-2.7c4.04-4.89 10.15-8 16.98-8zm-39.03 8h-2.69C10.65 24.3 5.6 22 0 22v-2c6.83 0 12.94 3.11 16.97 8zm15.01-.4a28.09 28.09 0 0 1 2.8-3.86 8 8 0 0 0-13.55 0c1.03 1.2 1.97 2.5 2.79 3.86a4 4 0 0 1 7.96 0zm14.29-11.86c1.3-.48 2.63-.87 4-1.15a25.99 25.99 0 0 0-44.55 0c1.38.28 2.72.67 4.01 1.15a21.98 21.98 0 0 1 36.54 0zm-5.43 2.71c1.13-.72 2.3-1.37 3.54-1.93a19.98 19.98 0 0 0-32.76 0c1.23.56 2.41 1.2 3.54 1.93a15.98 15.98 0 0 1 25.68 0zm-4.67 3.78c.94-.95 1.96-1.83 3.03-2.63a13.98 13.98 0 0 0-22.4 0c1.07.8 2.09 1.68 3.03 2.63a9.99 9.99 0 0 1 16.34 0z'%3E%3C/path%3E%3C/svg%3E");
+  // background-image: url("data:image/svg+xml,%3Csvg width='80' height='88' viewBox='0 0 80 88' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M22 21.91V26h-2c-9.94 0-18 8.06-18 18 0 9.943 8.058 18 18 18h2v4.09c8.012.722 14.785 5.738 18 12.73 3.212-6.99 9.983-12.008 18-12.73V62h2c9.94 0 18-8.06 18-18 0-9.943-8.058-18-18-18h-2v-4.09c-8.012-.722-14.785-5.738-18-12.73-3.212 6.99-9.983 12.008-18 12.73zM54 58v4.696c-5.574 1.316-10.455 4.428-14 8.69-3.545-4.262-8.426-7.374-14-8.69V58h-5.993C12.27 58 6 51.734 6 44c0-7.732 6.275-14 14.007-14H26v-4.696c5.574-1.316 10.455-4.428 14-8.69 3.545 4.262 8.426 7.374 14 8.69V30h5.993C67.73 30 74 36.266 74 44c0 7.732-6.275 14-14.007 14H54zM42 88c0-9.94 8.06-18 18-18h2v-4.09c8.016-.722 14.787-5.738 18-12.73v7.434c-3.545 4.262-8.426 7.374-14 8.69V74h-5.993C52.275 74 46 80.268 46 88h-4zm-4 0c0-9.943-8.058-18-18-18h-2v-4.09c-8.012-.722-14.785-5.738-18-12.73v7.434c3.545 4.262 8.426 7.374 14 8.69V74h5.993C27.73 74 34 80.266 34 88h4zm4-88c0 9.943 8.058 18 18 18h2v4.09c8.012.722 14.785 5.738 18 12.73v-7.434c-3.545-4.262-8.426-7.374-14-8.69V14h-5.993C52.27 14 46 7.734 46 0h-4zM0 34.82c3.213-6.992 9.984-12.008 18-12.73V18h2c9.94 0 18-8.06 18-18h-4c0 7.732-6.275 14-14.007 14H14v4.696c-5.574 1.316-10.455 4.428-14 8.69v7.433z' fill='%239C92AC' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+  // background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 304 304' width='304' height='304'%3E%3Cpath fill='%239C92AC' fill-opacity='0.4' d='M44.1 224a5 5 0 1 1 0 2H0v-2h44.1zm160 48a5 5 0 1 1 0 2H82v-2h122.1zm57.8-46a5 5 0 1 1 0-2H304v2h-42.1zm0 16a5 5 0 1 1 0-2H304v2h-42.1zm6.2-114a5 5 0 1 1 0 2h-86.2a5 5 0 1 1 0-2h86.2zm-256-48a5 5 0 1 1 0 2H0v-2h12.1zm185.8 34a5 5 0 1 1 0-2h86.2a5 5 0 1 1 0 2h-86.2zM258 12.1a5 5 0 1 1-2 0V0h2v12.1zm-64 208a5 5 0 1 1-2 0v-54.2a5 5 0 1 1 2 0v54.2zm48-198.2V80h62v2h-64V21.9a5 5 0 1 1 2 0zm16 16V64h46v2h-48V37.9a5 5 0 1 1 2 0zm-128 96V208h16v12.1a5 5 0 1 1-2 0V210h-16v-76.1a5 5 0 1 1 2 0zm-5.9-21.9a5 5 0 1 1 0 2H114v48H85.9a5 5 0 1 1 0-2H112v-48h12.1zm-6.2 130a5 5 0 1 1 0-2H176v-74.1a5 5 0 1 1 2 0V242h-60.1zm-16-64a5 5 0 1 1 0-2H114v48h10.1a5 5 0 1 1 0 2H112v-48h-10.1zM66 284.1a5 5 0 1 1-2 0V274H50v30h-2v-32h18v12.1zM236.1 176a5 5 0 1 1 0 2H226v94h48v32h-2v-30h-48v-98h12.1zm25.8-30a5 5 0 1 1 0-2H274v44.1a5 5 0 1 1-2 0V146h-10.1zm-64 96a5 5 0 1 1 0-2H208v-80h16v-14h-42.1a5 5 0 1 1 0-2H226v18h-16v80h-12.1zm86.2-210a5 5 0 1 1 0 2H272V0h2v32h10.1zM98 101.9V146H53.9a5 5 0 1 1 0-2H96v-42.1a5 5 0 1 1 2 0zM53.9 34a5 5 0 1 1 0-2H80V0h2v34H53.9zm60.1 3.9V66H82v64H69.9a5 5 0 1 1 0-2H80V64h32V37.9a5 5 0 1 1 2 0zM101.9 82a5 5 0 1 1 0-2H128V37.9a5 5 0 1 1 2 0V82h-28.1zm16-64a5 5 0 1 1 0-2H146v44.1a5 5 0 1 1-2 0V18h-26.1zm102.2 270a5 5 0 1 1 0 2H98v14h-2v-16h124.1zM242 149.9V160h16v34h-16v62h48v48h-2v-46h-48v-66h16v-30h-16v-12.1a5 5 0 1 1 2 0zM53.9 18a5 5 0 1 1 0-2H64V2H48V0h18v18H53.9zm112 32a5 5 0 1 1 0-2H192V0h50v2h-48v48h-28.1zm-48-48a5 5 0 0 1-9.8-2h2.07a3 3 0 1 0 5.66 0H178v34h-18V21.9a5 5 0 1 1 2 0V32h14V2h-58.1zm0 96a5 5 0 1 1 0-2H137l32-32h39V21.9a5 5 0 1 1 2 0V66h-40.17l-32 32H117.9zm28.1 90.1a5 5 0 1 1-2 0v-76.51L175.59 80H224V21.9a5 5 0 1 1 2 0V82h-49.59L146 112.41v75.69zm16 32a5 5 0 1 1-2 0v-99.51L184.59 96H300.1a5 5 0 0 1 3.9-3.9v2.07a3 3 0 0 0 0 5.66v2.07a5 5 0 0 1-3.9-3.9H185.41L162 121.41v98.69zm-144-64a5 5 0 1 1-2 0v-3.51l48-48V48h32V0h2v50H66v55.41l-48 48v2.69zM50 53.9v43.51l-48 48V208h26.1a5 5 0 1 1 0 2H0v-65.41l48-48V53.9a5 5 0 1 1 2 0zm-16 16V89.41l-34 34v-2.82l32-32V69.9a5 5 0 1 1 2 0zM12.1 32a5 5 0 1 1 0 2H9.41L0 43.41V40.6L8.59 32h3.51zm265.8 18a5 5 0 1 1 0-2h18.69l7.41-7.41v2.82L297.41 50H277.9zm-16 160a5 5 0 1 1 0-2H288v-71.41l16-16v2.82l-14 14V210h-28.1zm-208 32a5 5 0 1 1 0-2H64v-22.59L40.59 194H21.9a5 5 0 1 1 0-2H41.41L66 216.59V242H53.9zm150.2 14a5 5 0 1 1 0 2H96v-56.6L56.6 162H37.9a5 5 0 1 1 0-2h19.5L98 200.6V256h106.1zm-150.2 2a5 5 0 1 1 0-2H80v-46.59L48.59 178H21.9a5 5 0 1 1 0-2H49.41L82 208.59V258H53.9zM34 39.8v1.61L9.41 66H0v-2h8.59L32 40.59V0h2v39.8zM2 300.1a5 5 0 0 1 3.9 3.9H3.83A3 3 0 0 0 0 302.17V256h18v48h-2v-46H2v42.1zM34 241v63h-2v-62H0v-2h34v1zM17 18H0v-2h16V0h2v18h-1zm273-2h14v2h-16V0h2v16zm-32 273v15h-2v-14h-14v14h-2v-16h18v1zM0 92.1A5.02 5.02 0 0 1 6 97a5 5 0 0 1-6 4.9v-2.07a3 3 0 1 0 0-5.66V92.1zM80 272h2v32h-2v-32zm37.9 32h-2.07a3 3 0 0 0-5.66 0h-2.07a5 5 0 0 1 9.8 0zM5.9 0A5.02 5.02 0 0 1 0 5.9V3.83A3 3 0 0 0 3.83 0H5.9zm294.2 0h2.07A3 3 0 0 0 304 3.83V5.9a5 5 0 0 1-3.9-5.9zm3.9 300.1v2.07a3 3 0 0 0-1.83 1.83h-2.07a5 5 0 0 1 3.9-3.9zM97 100a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-48 32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32 48a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16-64a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 96a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-144a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-96 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm96 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16-64a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-32 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM49 36a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-32 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM33 68a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-48a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 240a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16-64a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm80-176a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32 48a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm112 176a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM17 180a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM17 84a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32 64a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6z'%3E%3C/path%3E%3C/svg%3E");
+  // background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%239C92AC' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+  // background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+div {
+  padding: 0;
+  margin: 0;
+}
+
+a:link {
+  color: inherit;
+}
+
+a:visited {
+  color: inherit;
+}
+
+// Navbar
+.navbar {
+  display: none;
+}
+
+.navbarHeight {
+  height: 8rem;
+  @media screen and (max-width: 800px) {
+    height: 4rem;
+  }
+  // max-height: 100px;
+  // height: 100px;
+  // max-height: 100px;
+  // @media screen and (max-width: 900px){
+  //   height: 8vmax;
+  //   height: 60px;
+  // }
+  // @media screen and (max-height: 600px){
+  //   height: 8vmax;
+  //   height: 60px;
+  // }
+  opacity: 1;
+}
+
+.navbarHeightGone {
+  @extend .navbarHeight;
+  opacity: 0;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+.flex {
+  display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox; /* TWEENER - IE 10 */
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.section {
+  width: 100%;
+  // max-width: 1200px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Flexboxes
+
+.mainContainer {
+  @extend .flex;
+  width: 100%;
+  background: red; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(
+    left,
+    $colorGradient1,
+    $colorGradient2
+  ); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(
+    right,
+    $colorGradient1,
+    $colorGradient2
+  ); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(
+    right,
+    $colorGradient1,
+    $colorGradient2
+  ); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(
+    to right,
+    $colorGradient1,
+    $colorGradient2
+  ); /* Standard syntax */
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 50px;
+}
+
+.navPadding {
+  @extend .navbarHeight;
+  width: 100%;
+}
+
+.section0 {
+  @extend.flex;
+  @extend .navbarHeight;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  // overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 5;
+  @extend .transition0;
+}
+
+.navBox {
+  @extend .flex;
+  width: 100%;
+  height: 100%;
+  // max-width: 1024px;
+  margin: auto;
+  color: white;
+}
+
+.nav1 {
+  @extend .flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.section0Gone {
+  @extend.flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  // overflow: hidden;
+  @extend .navbarHeightGone;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 5;
+  .navBox {
+    pointer-events: none;
+    .nav1 {
+      pointer-events: none;
+    }
+  }
+  pointer-events: none;
+  @extend .transition0;
+}
+
+.nav1Text {
+  position: relative;
+  width: 100%;
+  margin: auto;
+  margin-bottom: 10px;
+  padding-right: 2%;
+  font-size: 2rem;
+  text-align: right;
+  @media screen and (max-width: 800px) {
+    font-size: 1rem;
+  }
+  opacity: 1;
+  top: 0;
+  @extend .transition0;
+}
+.nav1TextGone {
+  @extend .nav1Text;
+  position: absolute;
+  top: -300px;
+  opacity: 0;
+  @extend .transition0;
+}
+
+.section1Box {
+  @extend .flex;
+  width: 100%;
+  padding: 30px;
+  @media screen and (max-width: 900px) {
+    padding: 20px;
+  }
+}
+
+.section1 {
+  @extend .flex;
+  @extend .section;
+  margin: auto;
+  height: auto;
+  width: 100%;
+  border: 0;
+  text-align: center;
+}
+
+.section1Image {
+  @extend .flex;
+  width: 20%;
+  @media screen and (max-width: 900px) {
+    width: 30%;
+  }
+  margin: auto;
+  margin-right: 0;
+  // height: auto;
+  // min-height: 200px;
+  .section1BoxImage {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    // box-shadow: 10px 10px 10px rgba(0,0,0,.35);
+    // border-radius: 5%;
+  }
+  :hover {
+    // box-shadow: 20px 20px 10px rgba(0,0,0,.35);
+    @extend .transition2;
+    -moz-transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+  :not(:hover) {
+    @extend .transition2;
+  }
+}
+
+.flexText {
+  width: 100%;
+  margin: auto;
+}
+
+.section1Text1 {
+  width: 100%;
+  text-align: left;
+  white-space: nowrap;
+  color: white;
+  @include responsive-font(8vw, 20px, 150px, 50px);
+  @media screen and (max-width: 900px) {
+    @include responsive-font(8vw, 20px, 100px, 50px);
+  }
+  // text-shadow: 5px 5px 5px rgba(0,0,0,.2);
+}
+
+.section1Text2 {
+  @extend .section1Text1;
+  width: 100%;
+  white-space: nowrap;
+  // margin: auto;
+  @extend .font2;
+  @include responsive-font(5vw, 16px, 65px, 30px);
+}
+
+.section1Text3Box {
+  width: 100%;
+  margin: auto;
+  text-align: right;
+  padding-right: 10px;
+  color: white;
+}
+
+.section1Text3 {
+  @extend .section1Text2;
+  white-space: pre-line;
+  @include responsive-font(4vw, 20px, 60px, 50px);
+  margin: auto;
+  margin-left: 0;
+  margin-bottom: 0;
+
+  color: white;
+  :hover {
+    // text-shadow: 10px 10px 5px rgba(0,0,0,0.4);
+    @extend .transition1;
+    -moz-transform: scale(1.25);
+    -webkit-transform: scale(1.25);
+    transform: scale(1.25);
+  }
+  :not(:hover) {
+    @extend .transition1;
+  }
+
+  @media screen and (max-width: 900px) {
+    @include responsive-font(3vw, 20px, 40px, 30px);
+  }
+}
+
+.section2Box {
+  width: 100%;
+  background-color: white;
+  padding: 20px;
+  @media screen and (max-width: 900px) {
+    padding: 5px;
+  }
+}
+
+.section2 {
+  @extend .flex;
+  @extend .section;
+  height: auto;
+  // @extend .shadowFull;
+  // background-color: rgba(0,0,0,.1);
+}
+
+.section2Text {
+  @extend .flex;
+  margin: auto;
+  width: 98%;
+  padding: 20px;
+}
+
+.section2TextTitle {
+  @extend .color1;
+  @extend .fontSizeTitle1;
+  margin: auto;
+  width: 90%;
+}
+
+.section2TextBodyBox {
+  @extend .flex;
+  width: 80%;
+  margin: auto;
+  padding-top: 20px;
+}
+
+.section2TextBody {
+  @extend .font2;
+  @extend .color1;
+  @extend .fontSizeBody1;
+  width: 100%;
+  margin: auto;
+  padding-bottom: 10px;
+  text-align: justify;
+}
+
+.iconBoxOuter {
+  @extend .flex;
+  margin: auto;
+  margin-top: 10px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.35);
+  width: 80%;
+  @media screen and (max-width: 900px) {
+    width: 90%;
+  }
+}
+
+.iconBox {
+  @extend .flex;
+  align-items: center;
+  padding-top: 10px;
+  width: 100%;
+  margin: auto;
+}
+
+// .iconBox {
+//   display: -webkit-flex;
+//   display: flex;
+//   -webkit-flex-direction: row /* works with row or column */;
+//   -webkit-align-items: center;
+//   align-items: center;
+//   -webkit-justify-content: center;
+//   justify-content: center;
+//   width: 100%;
+// }
+.iconBoxJS {
+  @extend .iconBox;
+  padding: 0;
+  background-color: #f0da5a;
+}
+
+.iconBoxImageBox {
+  width: 20%;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  margin: auto;
+  text-align: center;
+  :hover {
+    @extend .transition2;
+    -moz-transform: scale(0.8);
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+  :not(:hover) {
+    @extend .transition2;
+  }
+}
+
+.iconBoxImage {
+  max-width: 80%;
+  max-height: 4rem;
+  padding: 5%;
+}
+.iconBoxImageSmall {
+  width: 80%;
+}
+.iconBoxImageBoxJS {
+  @extend .flex;
+  @extend .iconBoxImageBox;
+  padding: 0;
+  margin: auto;
+}
+.iconBoxImageJS {
+  @extend .iconBoxImage;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.section3Box {
+  @extend .flex;
+  @extend .transition1;
+  width: 100%;
+  padding: 20px;
+  padding-bottom: 20px;
+  background-color: rgba(0, 0, 0, 0.4);
+  @media screen and (max-width: 900px) {
+    padding: 5px;
+    padding-bottom: 0;
+  }
+}
+
+.section3 {
+  @extend .section;
+  @extend .flex;
+  @extend .transition1;
+  position: relative;
+  margin: auto;
+  height: auto;
+  text-align: center;
+  border: 0;
+  padding-bottom: 10px;
+  // background-color: rgba(0,0,0,.4);
+}
+
+.section3Title {
+  @extend .fontSizeTitle2;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+
+.tabBar {
+  @extend .flex;
+  margin: auto;
+  width: 100%;
+  margin-bottom: 10px;
+  @media screen and (max-width: 900px) {
+    margin-bottom: -5px;
+  }
+  justify-content: space-between;
+  // @extend .shadowFull;
+}
+
+.tabBarTab {
+  @extend .flex;
+  @extend .transition1;
+  width: 33%;
+  height: 100px;
+  margin-top: 5px;
+  @media screen and (max-width: 900px) {
+    height: 35px;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 5px;
+  }
+  color: white;
+  background-color: $color1;
+  background-color: $colorGradient2;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    // color: $color1;
+    color: black;
+    cursor: pointer;
+  }
+}
+
+.tabBarTabActive {
+  &:hover {
+    background-color: $colorGradient1;
+    color: white;
+    cursor: pointer;
+  }
+  @extend .tabBarTab;
+  background-color: $colorGradient1;
+  pointer-events: none;
+}
+
+.tabBarTabTitle {
+  @extend .fontSizeBody2;
+  margin: auto;
+}
+
+.portfolioBoxBox {
+  @extend .flex;
+  width: 100%;
+  margin: auto;
+  margin-top: 20px;
+  // background-color: green;
+}
+.portfolioBox {
+  @extend .flex;
+  background-color: rgba(0, 0, 0, 0.5);
+  // padding: 40px;
+  // padding-left: 5%;
+  // padding-right: 5%;
+  margin: auto;
+  @extend .transition2;
+}
+.portfolioBoxHidden {
+  @extend .portfolioBox;
+  opacity: 0;
+  visibility: hidden;
+  @extend .transition2;
+}
+
+.portfolioTitleText {
+  @extend .font1;
+  @extend .fontSizeTitle4;
+  @extend .transition2;
+  opacity: 1;
+  color: white;
+  width: 100%;
+  text-align: left;
+  padding: 10px;
+  margin-left: 10px;
+}
+.portfolioTitleTextHidden {
+  @extend .portfolioTitleText;
+  opacity: 0;
+}
+
+.portfolioYoutubeBox {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin: auto;
+  z-index: 1;
+  opacity: 1;
+}
+
+.portfolioYoutubeBox::after {
+  padding-top: 56.25%;
+  /* 16:9 ratio */
+  display: block;
+  content: '';
+}
+
+.portfolioYoutubeBoxSmall {
+  // @extend .transition2;
+  display: inline-block;
+  position: relative;
+  width: 60%;
+  margin: auto;
+  z-index: 1;
+}
+
+.portfolioYoutubeBoxSmall::after {
+  padding-top: 56.25%;
+  /* 16:9 ratio */
+  display: block;
+  content: '';
+}
+
+.portfolioYoutubeVideo {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  /* fill parent */
+  // background-color: deepskyblue;
+  /* let's see it! */
+  // color: white;
+}
+
+.imageCache {
+  display: none;
+}
+
+.iframe {
+  @extend .transition5;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  visibility: visible;
+}
+.iframeHidden {
+  @extend .transition2;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  opacity: 0;
+}
+.portfolioImageHREF {
+  @extend .flex;
+  width: 100%;
+}
+.portfolioImageImage {
+  @extend .transition5;
+  width: 100%;
+  opacity: 1;
+  visibility: visible;
+}
+.portfolioImageImageHidden {
+  @extend .transition2;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  opacity: 0;
+}
+.portfolioImageBox {
+  @extend .flex;
+  position: relative;
+  width: 90%;
+  margin: auto;
+  @media screen and (max-width: 900px) {
+    width: 100%;
+    order: -1;
+  }
+}
+.portfolioImage {
+  @extend .flex;
+  position: relative;
+  width: 100%;
+  margin: auto;
+}
+
+.portfolioBodyText {
+  @extend .section2TextBody;
+  @extend .fontSizeBody1;
+  @extend .transition2;
+  margin: auto;
+  width: 100%;
+  color: white;
+  opacity: 1;
+  // margin-top: 10px;
+  padding: 20px;
+  padding-top: 0;
+  // @include responsive-font(2vw, 16px, 25px, 20px);
+  // margin-left: 10px;
+  // @extend .transition3;
+}
+.portfolioBodyTextHidden {
+  @extend .portfolioBodyText;
+  opacity: 0;
+  // @extend .transition3;
+}
+.portfolioBodyTextGone {
+  @extend .portfolioBodyText;
+  opacity: 0;
+}
+
+.portfolioLink {
+  @extend .portfolioBodyText;
+  @extend .transition2;
+  display: none;
+  text-align: left;
+  margin: auto;
+  width: 100%auto;
+  color: white;
+  opacity: 1;
+}
+.portfolioLinkHidden {
+  @extend .portfolioLink;
+  opacity: 0;
+}
+.portfolioLinkGone {
+  @extend .portfolioLink;
+  opacity: 0;
+}
+
+.section4Box {
+  @extend .section3Box;
+  padding: 0;
+  background-color: rgba(255, 255, 255, 0.3);
+  margin: 10px;
+  padding: 50px;
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -o-transition: 1s;
+  transition: 1s;
+  // width: 100%;
+  // padding: 20px;
+  // padding-top: 5px;
+  // @media screen and (max-width: 900px){
+  //   padding: 5px;
+  //   padding-top: 5px;
+  // }
+}
+.section4BoxHidden {
+  @extend .section4Box;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -o-transition: 1s;
+  transition: 1s;
+  // padding: 20px;
+  // padding-top: 5px;
+  // @media screen and (max-width: 900px){
+  //   padding: 5px;
+  //   padding-top: 5px;
+  // }
+}
+
+.section4 {
+  @extend .section3;
+  background-color: rgba(255, 255, 255, 0.3);
+  // @extend .flex;
+  // @extend .section;
+  // @extend .transition2;
+  // height: auto;
+  box-sizing: border-box;
+  // border: 5px white solid;
+
+  // // @extend .shadowFull;
+}
+.section4Hidden {
+  @extend .section4;
+  visibility: hidden;
+  opacity: 0;
+  // @extend .flex;
+  // @extend .section;
+  // @extend .transition2;
+  // width: 85%;
+  // height: auto;
+  // border: 5px white solid;
+  // margin-bottom: 20px;
+  // @extend .shadowFull;
+}
+
+.section4Title {
+  @extend .font1;
+  @extend .fontSizeTitle4;
+  // color: $color1;
+  color: white;
+  width: 100%;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.section4Text {
+  @extend .section2TextBody;
+  color: white;
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  padding: 0;
+  padding-bottom: 20px;
+}
+
+.section4ImageBox {
+  @extend .flex;
+  width: 100%;
+  background-color: white;
+}
+.section4ImageBox {
+  @extend .flex;
+  margin: auto;
+  width: 60%;
+}
+
+.miniProjectBox {
+  @extend .flex;
+  width: 90%;
+  text-align: center;
+  margin: auto;
+  padding: 20px;
+  @media screen and (max-width: 900px) {
+    padding: 10px;
+  }
+}
+
+.miniProject {
+  width: 100%;
+  padding-bottom: 0.5%;
+  color: white;
+}
+
+.miniProjectLink {
+  @extend .fontSizeBody1b;
+  // @extend .section2TextBody;
+  width: 100%;
+  margin: auto;
+  color: white;
+  :link {
+    color: white;
+  }
+  :visited {
+    color: white;
+  }
+  // color: $color1;
+  // :link {
+  //   color: $color1;
+  // }
+  // :visited {
+  //   color: $color2;
+  // }
+}
+
+.section5Box {
+  @extend .section4Box;
+  padding: 20px;
+  padding-bottom: 20px;
+  padding-top: 40px;
+  background-color: transparent;
+}
+
+.section5 {
+  @extend .section;
+  @extend .flex;
+  background-color: transparent;
+  color: white;
+}
+
+.section5Title {
+  @extend .fontSizeTitle3;
+  margin: auto;
+
+  color: white;
+  line-height: 80%;
+  // margin-bottom: -2%;
+}
+
+.section5Text {
+  @extend .section4Text;
+  padding: 0;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  @media screen and (max-width: 900px) {
+    padding-bottom: 10px;
+    padding-top: 2px;
+  }
+  color: white;
+  :visited {
+    color: white;
+  }
+  :link {
+    color: white;
+  }
+}
+
+.section5Text2 {
+  @extend .section2TextBody;
+  width: 80%;
+  margin: auto;
+  color: white;
+  text-align: justify;
+  padding-top: 20px;
+  @media screen and (max-width: 900px) {
+    padding: 5px;
+    padding-top: 10px;
+  }
+}
+
+.section6Box {
+  width: 100%;
+  @extend .flex;
+  background-color: white;
+  padding: 20px;
+  padding-top: 25px;
+  @media screen and (max-width: 900px) {
+    padding: 5px;
+    padding-top: 10px;
+  }
+}
+
+.section6 {
+  @extend .flex;
+  @extend .section;
+  width: 100%;
+  // @extend .shadowFull;
+}
+
+.section6Title {
+  @extend .flex;
+  width: 100%;
+  padding-top: 10px;
+  // padding: 20px;
+}
+.section6TitleText {
+  @extend .fontSizeTitle3;
+  // @include responsive-font(12vw, 20px, 200px, 100px);
+  line-height: 50%;
+  @extend .font1;
+  // font-size: 7vw;
+  margin-left: auto;
+  margin-right: auto;
+  color: $color1;
+}
+
+.section6Text {
+  @extend .section4Text;
+  white-space: pre-wrap;
+  @include responsive-font(4vw, 20px, 120px, 50px);
+  // margin-top: -1vw;
+  // margin-bottom: -0.5vw;
+  width: 100%;
+  padding: 0;
+  color: $color1;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+.section6IconsBox {
+  width: 100%;
+  text-align: center;
+  // margin-bottom: 20px;
+  padding-bottom: 5px;
+}
+
+.section6Icons {
+  // @extend .section6Text;
+  // @include responsive-font(6vw, 20px, 120px, 50px);
+  @extend .fontSizeIcons1;
+  display: inline;
+  // font-size: 4vw;
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: auto;
+  :hover {
+    @extend .transition1;
+    -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  :not(:hover) {
+    @extend .transition1;
+  }
+  :link {
+    color: $color1;
+  }
+  :visited {
+    color: $color1;
+  }
+  ::before {
+    color: $color1;
+  }
+}
+
+.section7Whole {
+  @extend .section;
+  width: 100%;
+  // max-width: 1200px;
+  @extend .flex;
+  padding: 20px;
+  padding-top: 20px;
+  @media screen and (max-width: 900px) {
+    padding: 5px;
+    padding-top: 20px;
+  }
+}
+
+.section7HeaderBox {
+  @extend .flex;
+  @extend .section;
+  width: 100%;
+  // padding: 20px;
+  // background-color: rgba(49, 24, 71, 0.5);
+  // margin-top: 20px;
+}
+
+.section7Header {
+  @extend .flex;
+  margin: auto;
+  width: 100%;
+  padding: 20px;
+  background-color: rgba(230, 20, 100, 0.5);
+}
+.section7HeaderClear {
+  @extend .section7HeaderBox;
+  background-color: rgba(230, 20, 100, 0);
+}
+
+.section7Box1 {
+  @extend .flex;
+  @extend .section;
+  width: 100%;
+}
+.section7Box2 {
+  @extend .flex;
+  @extend .section;
+  width: 100%;
+}
+.section7 {
+  @extend .flex;
+  // background-color: rgba(230, 20, 100, .5);;
+  // background-color: rgba(49, 24, 71, 0.5);
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  margin: auto;
+  padding: 20px;
+  @media screen and (max-width: 900px) {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  // padding: 1vw;
+  // padding-bottom: 3vw;
+  // margin-top: 50px;
+}
+
+.section72 {
+  @extend .flex;
+  padding: 20px;
+  @media screen and (max-width: 900px) {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  background-color: rgba(230, 20, 100, 0.5);
+  width: 100%;
+  margin: auto;
+}
+.section7Title {
+  @extend .fontSizeTitle4;
+  @extend .font1;
+  // font-size: 12.2vw;
+  margin: auto;
+  color: white;
+  pointer-events: none;
+}
+.section7Title2 {
+  @extend .fontSizeTitle4;
+  @extend .font1;
+  text-align: center;
+  margin: auto;
+  color: white;
+  cursor: pointer;
+}
+.section7Text {
+  @extend .section5Text;
+  width: 80%;
+  // max-width: 900px;
+  @media screen and (max-width: 900px) {
+    width: 90%;
+  }
+  text-align: justify;
+  pointer-events: none;
+  padding-bottom: 20px;
+  @media screen and (max-width: 900px) {
+    padding-bottom: 10px;
+  }
+  position: inherit;
+  opacity: 1;
+  @extend .transition3;
+}
+.section7TextHide {
+  @extend .section7Text;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+hr {
+  width: 100%;
+  // margin-top: 40px;
+}
+.section7ImageBox {
+  @extend .flex;
+  width: 80%;
+  margin: auto;
+  @media screen and (max-width: 900px) {
+    width: 90%;
+    padding: 5px;
+    padding-bottom: 10px;
+    padding-top: 0;
+  }
+  padding-top: 0;
+  position: inherit;
+  opacity: 1;
+  // @extend .transition3;
+}
+
+.section7Image {
+  margin: auto;
+  width: 100%;
+  height: 100%;
+}
+.spacer {
+  width: 100%;
+  height: 20px;
+}
+
+.section7YoutubeBoxBox {
+  @extend .flex;
+  width: 80%;
+  margin: auto;
+  @media screen and (max-width: 900px) {
+    width: 90%;
+  }
+  position: inherit;
+  opacity: 1;
+  // @extend .transition3;
+}
+.section7YoutubeBox {
+  @extend .flex;
+  align-content: center;
+  width: 50%;
+  // margin: auto;
+  text-align: center;
+  padding: 0;
+  @media screen and (max-width: 900px) {
+    width: 100%;
+    min-width: 200px;
+    margin-bottom: 10px;
+  }
+}
+
+.footerBox {
+  @extend .flex;
+  position: relative;
+  width: 100%;
+  padding: 0;
+  margin-top: 30px;
+}
+.emptySpace {
+  width: 30%;
+  height: 10px;
+  background-color: orange;
+  margin: 0;
+}
+.footer {
+  @extend .flex;
+  background-color: $color1;
+  width: 50%;
+}
+
+.footerTextBox {
+  width: 100%;
+  padding: 30px;
+  @media screen and (max-width: 900px) {
+    padding: 15px;
+  }
+  padding-right: 0;
+}
+
+.footerText {
+  @extend .nav1Text;
+  padding: 0;
+  margin: 0;
+  @include responsive-font(4vw, 3px, 40px, 30px);
+  text-align: left;
+  // @media screen and (max-width: 900px){
+  //   @include responsive-font(4vw, 5px, 20px, 50px);
+  // }
+  color: white;
+}
+.footerText2 {
+  @extend .nav1Text;
+  padding: 0;
+  margin: 0;
+  @include responsive-font(3vw, 5px, 30px, 20px);
+  text-align: left;
+  // @media screen and (max-width: 900px){
+  //   @include responsive-font(4vw, 5px, 20px, 50px);
+  // }
+  color: white;
+}
+.footerIcons {
+  color: white;
+  margin: auto;
+  width: 100%;
+  padding: 30px;
+  @media screen and (max-width: 900px) {
+    padding: 25px;
+  }
+  padding-left: 0;
+  text-align: right;
+}
+.footerText3 {
+  @extend .footerText;
+  padding: 0;
+  margin: 0;
+  text-align: right;
+  :hover {
+    @extend .transition2;
+    -moz-transform: scale(0.8);
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+  :not(:hover) {
+    @extend .transition2;
+  }
+}
+
+//RESUME --------------------------------------------------------------------
+.resumeBoxBox {
+  // @extend .transition2;
+  @extend .flex;
+  // position: relative;
+  width: 100%;
+  @media screen and (max-width: 900px) {
+    position: absolute;
+    top: -5000px;
+    left: -5000px;
+  }
+}
+.resumeColumnBoxBox {
+  // @extend .transition2;
+  @extend .flex;
+  // position: relative;
+  width: 100%;
+  @media screen and (min-width: 901px) {
+    position: absolute;
+    top: -5000px;
+    left: -5000px;
+  }
+}
+.resumeBox {
+  // @extend .flex;
+  // @extend .transition4;
+  // height: 100%;
+  // width: 100%;
+  // height: auto;
+  padding-bottom: 20px;
+  padding-top: 40px;
+}
+.resumeBoxHide {
+  // @extend .transition4;
+  position: absolute;
+  top: -100000px;
+  left: -100000px;
+  width: 100%;
+}
+
+.letterBox {
+  @extend .flex;
+  width: 80%;
+  padding: 3%;
+  margin: auto;
+  background-color: white;
+}
+
+.letter {
+  @extend .flex;
+}
+
+.letterContent {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.imageBox {
+  @extend .flex;
+  width: 100%;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  // width: 100%;
+  // height: auto;
+}
+.imgColumn {
+  width: 30%;
+  height: 100%;
+  object-fit: cover;
+  // width: 100%;
+  // height: auto;
+}
+.resumeImageBox {
+  width: 100%;
+  height: 100%;
+}
+.resumeImage {
+  width: 100%;
+  height: 100%;
+  z-index: 60;
+  background-color: blue;
+  // height: 400px;
+  background-image: url('./images/RichardBWSquare900.jpg');
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+.resumeImageColumn {
+  // min-height: ;
+  width: 30%;
+  margin-right: 5px;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  @media screen and (min-width: 700px) {
+    width: 20%;
+    // margin: auto;
+  }
+  @media screen and (min-width: 800px) {
+    width: 10%;
+    // margin: auto;
+  }
+  height: 100%;
+  background-image: url('./images/RichardBW900.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.titleBox {
+  @extend .flex;
+  pointer-events: none;
+  width: 100%;
+  // height: 3vw;
+  background-color: rgba(0, 0, 0, 0.12);
+  border: 2px $color1 solid;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+.titleContent {
+  color: $color1;
+  width: 100%;
+  margin: auto;
+  padding: 3px;
+  @extend .font1;
+  pointer-events: none;
+  a {
+    pointer-events: all;
+  }
+  @include responsive-font(1.3vw, 1px, 18px, 18px);
+  @media screen and (max-width: 901px) {
+    @include responsive-font(1.3vw, 14px, 18px, 18px);
+  }
+  text-align: center;
+}
+.contentBox {
+  @extend .flex;
+  padding: 7px;
+  padding-bottom: 10px;
+  pointer-events: none;
+  a {
+    pointer-events: all;
+  }
+}
+.contentContent {
+  width: 100%;
+  color: $color1;
+  padding: 2px;
+  @extend .font2;
+  @include responsive-font(1.2vw, 1px, 12px, 12px);
+  @media screen and (min-width: 1200px) {
+    @include responsive-font(1.2vw, 1px, 12.5px, 12px);
+  }
+  @media screen and (min-width: 1300px) {
+    @include responsive-font(1.5vw, 1px, 13.5px, 12px);
+  }
+  @media screen and (max-width: 901px) {
+    @include responsive-font(1.5vw, 12px, 18px, 18px);
+  }
+  text-align: left;
+}
+.contentContentImage {
+  @extend .contentContent;
+  width: 65%;
+  margin: auto;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+  padding-bottom: 1%;
+}
+
+.four {
+  position: relative;
+  flex: 0 0 28%;
+  @media screen and (max-width: 900px) {
+    flex: 0 0 100%;
+  }
+}
+.fourImage {
+  position: relative;
+  flex: 0 0 16%;
+  @media screen and (max-width: 900px) {
+    flex: 0 0 100%;
+  }
+}
+.fourInner {
+  width: 98%;
+  height: 98%;
+  margin-left: 2%;
+  background-color: rgba(0, 0, 0, 0.08);
+}
+.four:nth-of-type(1) {
+  .fourInner {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+.two {
+  position: relative;
+  flex: 0 0 50%;
+}
+.twoInner {
+  width: 98%;
+  height: 100%;
+  margin-left: 2%;
+  @media screen and (max-width: 900px) {
+    margin-left: 0;
+  }
+  background-color: rgba(0, 0, 0, 0.08);
+}
+.twoInnerFlex {
+  @extend .flex;
+  width: 98%;
+  height: 100%;
+  margin-left: 2%;
+  background-color: rgba(0, 0, 0, 0.08);
+  .twentyFive {
+    width: 25%;
+  }
+}
+
+.two:nth-of-type(1) {
+  .twoInner {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+.two:nth-of-type(1) {
+  .twoInnerFlex {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+.one {
+  position: relative;
+  flex: 0 0 100%;
+}
+.oneInner {
+  @extend .flex;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.08);
+}
+.oneInnerFlex {
+  @extend .oneInner;
+  @extend .flex;
+  .twentyFiveColumn {
+    width: 25%;
+    // .contentBox{
+    //   .contentContent{
+    //     @media screen and (max-width: 900px){
+    //       @include responsive-font(1.2vw, 10px, 18px, 18px);
+    //     }
+    //   }
+    // }
+  }
+}
+
+// @media screen and (min-width: 601px){
+//   .one:nth-of-type(1){
+//     .oneInner{
+//       width: 100%;
+//       margin-left: 0;
+//     }
+//   }
+// }
+
+.tabBarResume {
+  @extend .flex;
+  margin: auto;
+  width: 90%;
+  // padding-bottom: 10px;
+  // @extend .shadowFull;
+}
+
+.tabBarTabResume {
+  @extend .flex;
+  @extend .transition0;
+  border: 2px white solid;
+  margin: auto;
+  width: 24.7%;
+  height: 50px;
+  @media screen and (max-width: 900px) {
+    height: 30px;
+    width: 24.5%;
+  }
+  color: white;
+  background-color: $color1;
+  background-color: $colorGradient2;
+  &:hover {
+    // background-color: rgba(255,255,255,.4);
+    // color: $color1;
+    // color: black;
+    cursor: pointer;
+  }
+  // margin-bottom: 40px;
+}
+
+.tabBarTabActiveResume {
+  @extend .tabBarTabResume;
+  &:hover {
+    // background-color: rgba(255,255,255,.4);
+    // color: $color1;
+    // color: black;
+    cursor: pointer;
+  }
+  background-color: $colorGradient1;
+}
+
+// ----------------------------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------------
+//REACT DEMOS --------------------------------------------------------------------
+.reactBoxBox {
+  @extend .flex;
+  position: relative;
+  width: 100%;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -o-transition: 1s;
+  transition: 1s;
+}
+.reactBoxBoxHide {
+  @extend .flex;
+  position: relative;
+  width: 100%;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -o-transition: 1s;
+  transition: 1s;
+}
+.reactBox {
+  @extend .flex;
+  width: 100%;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -o-transition: 1s;
+  transition: 1s;
+}
+.reactBoxHide {
+  @extend .reactBox;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -o-transition: 1s;
+  transition: 1s;
+}
+
+.reactTitle {
+  @extend .flex;
+  margin-left: 10px;
+  width: 100%;
+  padding: 10px;
+  opacity: inherit;
+}
+.reactText {
+  @extend .reactTitle;
+  opacity: inherit;
+}
+.reactTitleText {
+  width: 100%;
+  text-align: left;
+  color: white;
+  margin: auto;
+  opacity: inherit;
+  @include responsive-font(4vw, 16px, 60px, 20px);
+}
+.reactTextText {
+  @extend .reactTitleText;
+  @extend .fontSizeBody1;
+  @include responsive-font(3vw, 14px, 20px, 16px);
+  // @include responsive-font(2vw, 16px, 25px, 20px);
+}
+
+.iconsAndApp {
+  @extend .flex;
+  display: none;
+  opacity: inherit;
+  width: 100%;
+  margin-top: 10px;
+  // border: 3px white solid;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.iconBoxOuterPortfolio {
+  @extend .flex;
+  width: 10%;
+  opacity: inherit;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  // background-color: rgba(0, 0, 0, 0.5);
+  justify-content: flex-end;
+  @media screen and (max-width: 900px) {
+    width: 100%;
+    height: auto;
+  }
+}
+.iconBoxPortfolio {
+  @extend .flex;
+  opacity: inherit;
+  padding: 10px;
+  width: 100%;
+}
+.iconBoxImageBoxPortfolio {
+  width: 100%;
+  opacity: inherit;
+  margin: auto;
+  :hover {
+    @extend .transition2;
+    -moz-transform: scale(0.8);
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+  :not(:hover) {
+    @extend .transition2;
+  }
+  @media screen and (max-width: 900px) {
+    width: 22%;
+  }
+}
+.appBox {
+  @extend .flex;
+  position: relative;
+  opacity: inherit;
+  width: 90%;
+  // padding: 30px;
+  // border: white solid 5px;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 0;
+  @media screen and (max-width: 900px) {
+    width: 100%;
+    order: -1;
+  }
+}
+
+.headerText {
+  width: 100%;
+  margin: auto;
+  font-size: 20px;
+  color: white;
+  margin-bottom: 20px;
+  opacity: inherit;
+}
+
+.buttonBox {
+  @extend .tabBar;
+  opacity: inherit;
+  // @extend .flex;
+  // width: 100%;
+  // height: 100px;
+  // margin-top: 10px;
+}
+
+.myButton1 {
+  @extend .tabBarTabResume;
+  opacity: inherit;
+  background-color: rgba(20, 230, 46, 0.7);
+  width: 80%;
+  // @extend .flex;
+  // margin: auto;
+  // height: 100%;
+  // width: 80%;
+  // background-color: orange;
+  // border: 3px solid white;
+  // cursor: pointer;
+}
+
+.myButton1Text {
+  opacity: inherit;
+  color: white;
+  margin: auto;
+  pointer-events: none;
+  font-size: 25px;
+}
+
+.userCardBox {
+  @extend .flex;
+  margin-bottom: 1rem;
+  opacity: inherit;
+  position: relative;
+  padding: 5px;
+  padding-top: 10px;
+  width: 100%;
+  justify-content: center;
+  // background-color: blue;
+}
+
+.userCard {
+  @extend .flex;
+  opacity: inherit;
+  // flex-direction: column;
+  position: relative;
+  width: 30%;
+  margin: 0.5%;
+  // padding: 1%;
+  // margin-top: 50px;
+  min-height: 50px;
+  border: solid white 2px;
+  border-radius: 5%;
+  opacity: 0;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+  // @media screen and (max-width: 900px) {
+  //   width: 40%;
+  // }
+}
+.userCardShow {
+  @extend .userCard;
+  opacity: 1;
+  visibility: visible;
+  background-color: rgba(0, 128, 116, 0.33);
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -o-transition: 1s;
+  transition: 1s;
+}
+// @media screen and (max-width: 900px) {
+//   .userCardShow:nth-child(3n) {
+//     display: none;
+//   }
+// }
+.userCardShow0 {
+  @extend .userCardShow;
+  opacity: 1;
+  visibility: visible;
+  // background-color: rgba(0, 128, 116, 0.66);
+  background-color: rgba(48, 224, 78, 0.66);
+  -webkit-transition: 2s;
+  -moz-transition: 2s;
+  -o-transition: 2s;
+  transition: 2s;
+  -webkit-transition-delay: 0.5s;
+  -moz-transition-delay: 0.5s;
+  -o-transition-delay: 0.5s;
+  transition-delay: 0.5s;
+}
+
+.nameImageBox {
+  @extend .flex;
+  opacity: inherit;
+  width: 100%;
+  padding-top: 20px;
+  pointer-events: none;
+}
+
+.userNameBox {
+  @extend .flex;
+  opacity: inherit;
+  flex: 1 1 auto;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 8px;
+  padding-top: 0;
+  pointer-events: none;
+}
+
+.userName {
+  @extend .flex;
+  width: 100%;
+  opacity: inherit;
+  color: white;
+  @include responsive-font(2vw, 12px, 30px, 20px);
+  font-size: 1.5rem;
+  line-height: 150%;
+  @media screen and (max-width: 1200px) {
+    @include responsive-font(3vw, 24px, 50px, 20px);
+    font-size: 1.2rem;
+  }
+  @media screen and (max-width: 900px) {
+    @include responsive-font(4vw, 0px, 60px, 20px);
+    font-size: 1.1rem;
+  }
+
+  span {
+    margin: auto;
+  }
+}
+
+.userCardImageBox {
+  @extend .userNameBox;
+  width: 100%;
+  padding-bottom: 0;
+  padding-top: 10px;
+  pointer-events: none;
+}
+.userCardImage {
+  opacity: inherit;
+  width: 50%;
+  height: 100%;
+  margin: auto;
+  border-radius: 5%;
+  pointer-events: none;
+}
+
+.userDetailsBox {
+  @extend .userNameBox;
+  display: flex;
+  flex: 1 1 auto;
+  width: 100%;
+  border-top: 2px solid white;
+  padding-top: 8px;
+  pointer-events: none;
+}
+.userDetails {
+  @extend .userName;
+  @include responsive-font(1rem, 6px, 16px, 18px);
+  font-size: 1.3rem;
+  width: 100%;
+  text-align: left;
+  margin: auto;
+  overflow: hidden;
+  pointer-events: none;
+  @media screen and (max-width: 1200px) {
+    @include responsive-font(1rem, 14px, 16px, 18px);
+    font-size: 1rem;
+  }
+  @media screen and (max-width: 900px) {
+    @include responsive-font(1rem, 6px, 16px, 18px);
+    font-size: 0.5rem;
+  }
+}
+
+.cornerButtons {
+  @extend .flex;
+  opacity: inherit;
+  position: absolute;
+  height: 4vw;
+  max-height: 100px;
+  width: 4vw;
+  max-width: 100px;
+  border-radius: 50%;
+  border: 2px solid white;
+  cursor: pointer;
+  @media screen and (max-width: 1200px) {
+    height: 6vw;
+    width: 6vw;
+  }
+  @media screen and (max-width: 900px) {
+    height: 8vw;
+    width: 8vw;
+  }
+}
+
+.editButtonBox {
+  @extend .cornerButtons;
+  opacity: inherit;
+  background-color: orange;
+  top: -1.5vw;
+  left: -1.5vw;
+  @media screen and (max-width: 1200px) {
+    top: -2.25vw;
+    left: -2.25vw;
+  }
+  @media screen and (max-width: 900px) {
+    top: -3vw;
+    left: -3vw;
+  }
+}
+
+.deleteButtonBox {
+  @extend .cornerButtons;
+  opacity: inherit;
+  background-color: red;
+  bottom: -1.5vw;
+  right: -1.5vw;
+  @media screen and (max-width: 1200px) {
+    bottom: -2.25vw;
+    right: -2.25vw;
+  }
+  @media screen and (max-width: 900px) {
+    bottom: -3vw;
+    right: -3vw;
+  }
+}
+
+.editButton {
+  @extend .flex;
+  width: 100%;
+}
+
+.deleteButton {
+  @extend .editButton;
+}
+
+.editButtonText {
+  @include responsive-font(2vw, 12px, 20px, 12px);
+  color: white;
+  opacity: 1;
+  margin: auto;
+  pointer-events: none;
+}
+.deleteButtonText {
+  @extend .editButtonText;
+}
